@@ -1,0 +1,6 @@
+Simple happy installation:
+	perl Makefile.PL
+	make
+	make install
+
+No make test available yet. Perhaps in the next release.

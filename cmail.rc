@@ -1,0 +1,14 @@
+# Sample ~/.cmailrc file
+# Comments must be on lines by themselves, such as this one
+  # or this one.
+
+# To set option, use this sort of line. This on changes the output module
+# to color (defaults to 'plain')
+set output color
+
+# These are example mailbox lines
+# URI					Name		display options
+maildir:///home/user/Mail/INBOX/	Inbox		bold green
+mbox:///var/mail/user			System		bold green
+pop3://user:pass@mail.isp.com/		ISP's POP3	red
+imap://user:pass@nice.isp.com/INBOX	ISP's IMAP	yellow

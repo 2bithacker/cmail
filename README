@@ -1,0 +1,85 @@
+NAME
+    cmail - a simple and modular mail counter
+
+SYNOPSIS
+    cmail [--verbose] [--config=config] [--output=output]
+
+DESCRIPTION
+    cmail reads in ~/.cmailrc for a list of mailboxes and reads each box to
+    get a count of the mail in it. It then displays this information to the
+    user, usually as a name, total mail count, and new mail count.
+
+    Command line options are:
+
+    --verbose
+        increases the verbosity of cmail, can be specified multiple times to
+        increase verbosity even more.
+
+    --config=config
+        specify a config file other than ~/.cmailrc
+
+    --output=output
+        specify an output module on the command line. defaults to plain, and
+        can also be set in the config file.
+
+    All options can be shortened to the shortest unique string. (For
+    example, '-v' instead of '--verbose'.)
+
+CONFIGURATION FILE
+    The cmail configuration file contains a number of lines, each describing
+    either a mailbox, or an option setting. For options, the format is:
+
+      set variable value
+
+    This can be used to set the output module, for instance:
+
+      set output color
+
+    Mailbox lines are only slightly more complicated. They are a series of 3
+    fields, seperated by 1 or more tabs. The fields are mailbox URI,
+    descriptive name, and output options. For example, the folling is an
+    entry for /var/mail/chip:
+
+      mbox:///var/mail/chip         Inbox   green
+
+    The default input modules are mbox, maildir, pop3, and imap. For pop3
+    and imap, you also need to specify a username and password. With imap,
+    you can also specify a mailbox, if none is provided, it will default to
+    INBOX.
+
+      pop3://user:pass@host/
+      imap://user:pass@host/INBOX
+
+    For information on the options field, consult the documentation of the
+    output module you are using, such as the CMail::Out::color manpage.
+
+MODULES
+    There are two types of modules in cmail4, input modules and output
+    modules.
+
+    Input modules are stored in the CMail::In hierarchy and are used for
+    reading from mailboxes. They are responsible for counting the mail. For
+    information on writing an Input modules, read the CMail::In::Base
+    manpage.
+
+    Output modules are stored in the CMail::Out hierarchy and are used for
+    displaying the mail count. The base distribution only contains two
+    output modules, plain and color, which both print to the console, but
+    color uses Term::ANSIColor to produce color codes. For information on
+    writing an Output modules, read the CMail::Out::Base manpage.
+
+FILES
+    ~/.cmailrc
+        cmail configuration file
+
+AUTHOR
+    Chip Marshall <chip@chocobo.cx> http://www.chocobo.cx/chip/
+
+CONTRIBUTORS
+    Ben April <ben@jlc.net>
+    Contributed the original color code.
+
+    David McNett <nugget@slacker.com>
+    Contributed the atime preservation code for mbox mailfiles. This keeps
+    the new mail detection in mailreaders like mutt happy.
+

@@ -1,0 +1,16 @@
+MANIFEST
+Makefile.PL
+cmail
+cmail.rc
+README
+INSTALL
+LICENSE
+CMail/In/Base.pm
+CMail/In/mbox.pm
+CMail/In/file.pm
+CMail/In/maildir.pm
+CMail/In/pop3.pm
+CMail/In/imap.pm
+CMail/Out/Base.pm
+CMail/Out/plain.pm
+CMail/Out/color.pm

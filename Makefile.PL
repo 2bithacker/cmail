@@ -10,6 +10,5 @@ WriteMakefile (
 	dist			=> {
 		COMPRESS	=> 'bzip2 -fv',
 		SUFFIX		=> '.bz2',
-		POSTOP		=> 'pgps -b $(DISTVNAME).$(TAR)$(SUFFIX)',
 	},
 );
